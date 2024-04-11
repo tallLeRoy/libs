@@ -282,9 +282,9 @@ math32 {
         }}
     }
 
-    asmsub divide(uword dividend @R0, uword divisor @R1) clobbers(A,X,Y) -> uword @R4, uword @R6 {
+    asmsub divide(uword dividend @R0, uword divisor @R1) clobbers(A,X,Y) -> uword @XY, uword @R2 {
         ; divide the dividend ulong by the divisor ulong
-        ; returns ulong quotient in R4,R5, ulong remainder in R6,R7
+        ; returns ulong ptr to quotient in XY, ulong ptr to remainder in R2
         ; use R8,R9 as work location ; R10,R11 for the divisor
         %asm{{
             ; **** set up R4 - R11 for the division   # 92 cycles -- ZP address saves 60 cycles/loop 
@@ -389,6 +389,12 @@ math32 {
 
             dex                 ; 2 cycles
             bpl -               ; 2 cycles
+            ; set up the return codes
+            lda #cx16.r6L
+            sta cx16.r2L
+            stz cx16.r2H
+            ldx #cx16.r4L
+            ldy #0
             rts
         }}
     }
