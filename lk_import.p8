@@ -10,7 +10,7 @@
 %import lk_math32_816
 %import lk_dbg
 
-lk {  ; misc subroutines for prog8
+lk {  ; misc subroutines for prog8 applications
     %option ignore_unused
 
     inline asmsub set_random_seeds() {
