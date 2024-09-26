@@ -63,7 +63,7 @@ dbg {  ; print to emulator console
     sub print     (uword value)  { optprint(value)}
     sub print_c   (ubyte value)  { emudbg.EMU_CHROUT=value}
 
-    sub nl()  { optprint("\n") }
+    sub nl()  { optprint("\r") }
     sub spc() { optprint(" ") }
 
     sub stop() { %asm{{stp}} }

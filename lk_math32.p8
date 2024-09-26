@@ -282,7 +282,7 @@ math32 {
         }}
     }
 
-    asmsub divide(uword dividend @R0, uword divisor @R1) clobbers(A,X,Y) -> uword @XY, uword @R2 {
+    asmsub divide(uword dividend @R0, uword divisor @R1) clobbers(A) -> uword @XY, uword @R2 {
         ; divide the dividend ulong by the divisor ulong
         ; returns ulong ptr to quotient in XY, ulong ptr to remainder in R2
         ; use R8,R9 as work location ; R10,R11 for the divisor
